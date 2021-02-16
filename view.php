@@ -50,5 +50,35 @@
                 </tr>
             </table>
         </form>
+        <form action="reply_process.php" method="post">
+            <input type="hidden" name="idx" value="<?=$idx?>">
+            <p>
+                <textarea type="text" name="replycontent" style = "float:left; width:700px; height:100px; border:1px solid;"></textarea>
+                <input type="submit" style="width:100px; height:100px" value="댓글 등록">
+            </p>
+        </form>
+        <p>
+            <table width = 800 border="1">
+                <tr>
+                    <th style = "width:60%;">내용</th>
+                    <th style = "width:15%;">작성자</th>
+                    <th style = "width:15%;">작성시간</th>
+                </tr>
+            <?php
+                $query = "SELECT * FROM reply where boardidx='$idx'";
+                $result = mysqli_query($conn, $query);
+                        
+                while($data= mysqli_fetch_array($result)) {
+            ?>
+                <tr>
+                    <td> <?= $data['replycontents'] ?></td>
+                    <td> <?= $data['uid'] ?> </td>
+                    <td> <?= $data['replydate'] ?> </td>
+                </tr>
+            <?php
+                }
+            ?>
+            </table>
+        </p>
     </body>
 </html>
