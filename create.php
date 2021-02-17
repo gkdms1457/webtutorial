@@ -19,7 +19,7 @@
                 </tr>
                 <tr>
                     <th> 첨부파일 </th>
-                    <td> <input type = "file" name="userfile"></td>
+                    <td> <input type = "file" name="fileupload[]" multiple="multiple" onchange="this.form.submit()"></td>
                 </tr>
                 <tr>
                     <td colspan="2">

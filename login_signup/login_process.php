@@ -19,6 +19,7 @@
 ?>
     <script>
         alert('로그인정보가 올바르지 않습니다.');
+        header('Location: /login.php');
     </script>
 <?php
     }

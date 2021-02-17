@@ -16,7 +16,7 @@
         <form action="create_process.php" method="post">
             <table width = 800 border="1" cellpadding=5>
                 <tr>
-                    <th> 제목 </th>
+                    <th style = "width:20%;"> 제목 </th>
                     <td> <?=$data['subject']?></td>
                 </tr>
                 <tr>
@@ -31,7 +31,17 @@
                 </tr>
                 <tr>
                     <th> 첨부파일 </th>
-                    <td> <input type = "file" name="userfile"></td>
+                    <td> 
+                    <?php
+                        $writer = $data['uid'];
+                        $boardsub = $data['subject'];
+                        $sql = "SELECT * FROM fileupload WHERE uid = '$writer' AND boardsubject = '$boardsub'";
+                        $res = mysqli_query($conn, $sql);
+                        while($row=mysqli_fetch_array($res)) {
+                        echo "<a href='download.php?filepath=".$row['changename']."&filename=".$row['realname']."'>".$row['realname']."</a>";
+                        }
+                    ?>
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2">

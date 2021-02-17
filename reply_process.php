@@ -20,7 +20,6 @@
     $result = mysqli_query($conn, $query);
                         
     $data= mysqli_fetch_array($result);
-    print_r($data);
 ?>
 <script>
     location.href="/view.php?idx=<?=$boardidx?>";
