@@ -19,6 +19,9 @@
                 이름 : <input type="text" name="user_name" placeholder="user_name">
             </p>
             <p>
+                이메일 : <input type="text" name="email" placeholder="email">
+            </p>
+            <p>
                 <input type="submit" value="회원가입">
             </p>
         </form>

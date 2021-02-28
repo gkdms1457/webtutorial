@@ -6,11 +6,13 @@
     $pwd = $_POST['pwd'];
     $pwd_check = $_POST['pwdcheck'];
     $uname = $_POST['user_name'];
+    $email = $_POST['email'];
     
     $uid = mysqli_real_escape_string($conn,$uid);
     $pwd = mysqli_real_escape_string($conn,$pwd);
     $pwd_check = mysqli_real_escape_string($conn,$pwd_check);
     $uname = mysqli_real_escape_string($conn,$uname);
+    $email = mysqli_real_escape_string($conn,$email);
 
     $existId = "SELECT uid FROM user WHERE uid = '$uid'";
     $Idcheck = mysqli_query($conn,$existId);
@@ -35,11 +37,12 @@
         exit;
     }
 
-    $query = "INSERT INTO user (uid, pwd, name)
+    $query = "INSERT INTO user (uid, pwd, name, email)
         VALUES(
             '{$uid}',
             '{$pwd}',
-            '{$uname}'  
+            '{$uname}',
+            '{$email}' 
         )";
     $result = mysqli_query($conn, $query);
     
