@@ -79,9 +79,22 @@
                 $result = mysqli_query($conn, $query);
                         
                 while($data= mysqli_fetch_array($result)) {
+                    
             ?>
                 <tr>
-                    <td> <?= $data['replycontents'] ?></td>
+                    <td> 
+                        <?= $data['replycontents'] ?>
+                        <?php
+                            if($_SESSION['isLogin'] === $data['uid']) {
+                        ?>
+                                <div style="float:right">
+                                    <a href = "replyupdate.php"> 수정</a>
+                                    <a href = "delreply_process.php?idx=<?=$idx?>&content=<?=$data['replycontents']?>"> 삭제</a>
+                                </div>
+                        <?php
+                            }
+                        ?>
+                    </td>
                     <td> <?= $data['uid'] ?> </td>
                     <td> <?= $data['replydate'] ?> </td>
                 </tr>
