@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html>
-    <head><meta charset="utf-8"></head>
+    <head>
+        <meta charset="utf-8">
+        <script>
+            function reply_update_open() {
+                document.style.disply = 'block';
+            }
+            function reply_update_close() {
+                document.style.disply = 'none';
+            }
+        </script>
+    </head>
     <body>
         <?php
             include "lib.php";
@@ -88,7 +98,20 @@
                             if($_SESSION['isLogin'] === $data['uid']) {
                         ?>
                                 <div style="float:right">
-                                    <a href = "replyupdate.php"> 수정</a>
+                                    <span onclick = "reply_update()"> 수정</span>
+                                    <?php
+                                        echo "<fieldset id='replyupdate' style='margin-top:20px; display:none;'>";
+                                        echo "<legend>댓글 수정란</legend>";
+                                        echo "<form action='replyupdate_process.php' method='post'>";
+                                        echo "<input type='hidden' name='boardnum' value='$idx'>";
+                                        echo "<input type='hidden' name='old_replycontent' value='$data['replycontents']'>";
+                                        //텍스트 전송
+                                        echo "<textarea type='text' name='textarea' style='width:100%; height:100px; border:1px solid; resize:none;'>'$data['replycontents']'</textarea>";
+                                        //등록 취소 혹은 등록
+                                        echo "</form>";
+                                        echo "<button style='float:right; border:1px solid; background:none;' onclick='reply_update_close()'>취소</button><button style='float:right; border:1px solid; background:none;' onclick='replyupdate.submit()'>댓글 수정</button>";
+                                        echo "</fieldset>";
+                                    ?>
                                     <a href = "delreply_process.php?idx=<?=$idx?>&content=<?=$data['replycontents']?>"> 삭제</a>
                                 </div>
                         <?php
