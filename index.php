@@ -13,6 +13,7 @@
         ?>
                 <a href = "login.php">로그인</a>
                 <a href = "signup.php">회원가입</a>
+                
         <?php
             } else{
                 echo "'$isLogin'님 반갑습니다!";

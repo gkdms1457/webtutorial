@@ -3,7 +3,7 @@
 
     $idx = $_GET['idx'];
     $content = $_GET['content'];
-    $idx = mysqli_real_escape_string($conn, $idx);
+    $idx = htmlspecialchars(mysqli_real_escape_string($conn, $idx));
     $uid = $_SESSION['isLogin'];
     
     $query = "DELETE FROM reply WHERE uid='$uid' and boardidx = '$idx' and replycontents = '$content' ";

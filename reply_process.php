@@ -4,8 +4,8 @@
     $replycontent = $_POST['replycontent'];
     $boardidx = $_POST['idx'];
 
-    $replycontent = mysqli_real_escape_string($conn,$replycontent);
-    $boardidx = mysqli_real_escape_string($conn,$boardidx);
+    $replycontent = htmlspecialchars(mysqli_real_escape_string($conn,$replycontent));
+    $boardidx = htmlspecialchars(mysqli_real_escape_string($conn,$boardidx));
     
     $uid = $_SESSION['isLogin'];
     $replydate = date("Y-m-d");

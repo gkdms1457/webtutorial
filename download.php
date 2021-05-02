@@ -1,4 +1,15 @@
 <?php
+if(preg_match("/\.\./",$_GET['filepath'])){
+    ?>
+    <script>
+    alert("다운로드 불가.");
+    document.location.href="/index.php"
+    </script>
+<?php    
+    exit;
+}
+
+
 if(isset($_GET['filepath'])){ //Get 방식으로 얻어온 파일 경로 정보가 있다면
     $file = $_GET['filepath'];  //파일 경로를 저장해준다.
 } else { //Get 방식으로 얻어온 파일 경로 정보가 없다면

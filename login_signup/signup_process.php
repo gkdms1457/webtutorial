@@ -8,11 +8,11 @@
     $uname = $_POST['user_name'];
     $email = $_POST['email'];
     
-    $uid = mysqli_real_escape_string($conn,$uid);
-    $pwd = mysqli_real_escape_string($conn,$pwd);
-    $pwd_check = mysqli_real_escape_string($conn,$pwd_check);
-    $uname = mysqli_real_escape_string($conn,$uname);
-    $email = mysqli_real_escape_string($conn,$email);
+    $uid = htmlspecialchars(mysqli_real_escape_string($conn,$uid));
+    $pwd = htmlspecialchars(mysqli_real_escape_string($conn,$pwd));
+    $pwd_check = htmlspecialchars(mysqli_real_escape_string($conn,$pwd_check));
+    $uname = htmlspecialchars(mysqli_real_escape_string($conn,$uname));
+    $email = htmlspecialchars(mysqli_real_escape_string($conn,$email));
 
     $existId = "SELECT uid FROM user WHERE uid = '$uid'";
     $Idcheck = mysqli_query($conn,$existId);

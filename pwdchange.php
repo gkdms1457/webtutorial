@@ -5,9 +5,9 @@
     $name = $_POST['uname'];
     $email = $_POST['email'];
 
-    $uid = mysqli_real_escape_string($conn,$uid);
-    $name = mysqli_real_escape_string($conn,$name);
-    $email = mysqli_real_escape_string($conn,$email);
+    $uid = htmlspecialchars(mysqli_real_escape_string($conn,$uid));
+    $name = htmlspecialchars(mysqli_real_escape_string($conn,$name));
+    $email = htmlspecialchars(mysqli_real_escape_string($conn,$email));
     
     $query = "SELECT uid FROM uid='$uid' and name='$name' and email='$email' ";
     $result = mysqli_query($conn,$query);
@@ -28,11 +28,12 @@
 <?php
     }else {
         echo "<script>alert('오류...관리자에게 문의하세요')</script>";
+        echo "123";
+        echo $num;
 ?>        
         <script>
-            document.location.href="/";
+            //document.location.href="/";
         </script>
 <?php
     }
-?>
 ?>

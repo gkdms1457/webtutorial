@@ -5,8 +5,8 @@
     $uid = $_POST['userid'];
     $pwd = $_POST['pwd'];
     
-    $uid = mysqli_real_escape_string($conn,$uid);
-    $pwd = mysqli_real_escape_string($conn,$pwd);
+    $uid = htmlspecialchars(mysqli_real_escape_string($conn,$uid));
+    $pwd = htmlspecialchars(mysqli_real_escape_string($conn,$pwd));
 
     $query = "select * from user where uid = '$uid' and pwd = '$pwd'";
     $result = mysqli_query($conn, $query);

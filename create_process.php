@@ -8,8 +8,8 @@
     $total = count($_FILES["fileupload"]["name"]);
     $uid = $_SESSION['isLogin'];
 
-    $subject = mysqli_real_escape_string($conn,$subject);
-    $memo = mysqli_real_escape_string($conn,$memo);
+    $subject = htmlspecialchars(mysqli_real_escape_string($conn,$subject));
+    $memo = htmlspecialchars(mysqli_real_escape_string($conn,$memo));
     
     $regdate = date("Y-m-d");
     $ip = $_SERVER["REMOTE_ADDR"] ?? '127.0.0.1';
@@ -29,6 +29,19 @@
         $ext = pathinfo($target_file,PATHINFO_EXTENSION);
         $filename = basename($target_file,".$ext");
         
+       
+        if(!(preg_match("/hwp/",$ext) || preg_match("/pdf/",$ext) || preg_match("/jpg/",$ext))){
+        ?>
+            <script>
+                alert("jpg, hwp, pdf만 가능합니다.");
+                document.location.href="/index.php"
+            </script>
+
+        <?php
+            exit;
+        }
+      
+
         $num = 1;
         if(file_exists($target_file)) {
             while(file_exists($target_file)) {

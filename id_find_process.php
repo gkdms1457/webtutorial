@@ -4,8 +4,8 @@
     $name = $_POST['uname'];
     $email = $_POST['email'];
 
-    $name = mysqli_real_escape_string($conn,$name);
-    $email = mysqli_real_escape_string($conn,$email);
+    $name = htmlspecialchars(mysqli_real_escape_string($conn,$name));
+    $email = htmlspecialchars(mysqli_real_escape_string($conn,$email));
     
     $query = "SELECT uid FROM user WHERE name='$name' and email='$email' ";
     $result = mysqli_query($conn,$query);

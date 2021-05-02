@@ -4,8 +4,8 @@
     <body>
         <a href = "login.php">로그인</a>
         <a href = "signup.php">회원가입</a>
-        <a href = "find_id.php">아이디 찾기</a>
-        <a href = "find_pwd.php">비밀번호 찾기</a>
+        <!--<a href = "find_id.php">아이디 찾기</a>
+        <a href = "find_pwd.php">비밀번호 찾기</a>-->
         <form action="login_signup/login_process.php" method="post">
             <p>
                 아이디 : <input type="text" name="userid" placeholder="id">

@@ -6,7 +6,7 @@
             include "lib.php";
 
             $idx = $_GET['idx'];
-            $idx = mysqli_real_escape_string($conn,$idx);
+            $idx = htmlspecialchars(mysqli_real_escape_string($conn,$idx));
 
             $query = "SELECT * FROM board WHERE idx = '$idx'";
             $result = mysqli_query($conn, $query);
